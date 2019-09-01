@@ -5,8 +5,25 @@ This are my personal notes taken during the course `RITx: CYBER501x Cybersecurit
 
 Feel free to use them during your study and if you find it useful you can star this repository. If you find a mistake or you think I have  missed something important I am more than happy to accept RP on this repo.
 
-* `Unit 2 <Unit_2.rst>`_
-* `Unit 3 <Unit_3.rst>`_
+Notes are written in Sphinx documentation format. You can visit build notes at url:
+
+How to build the notes
+======================
+
+Create Python virtual environments::
+
+	python3 -m venv envs3
+
+Install the requiremetns::
+
+	pip install -r requirements.txt
+
+Build the Sphinx docs::
+
+        make html
+
+Open the build documentation in browser...
+
 
 Richard von Kellner
 

@@ -1,0 +1,247 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Unit 3 &mdash; RITx: CYBER501x Cybersecurity Fundamentals - Personal study notes  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Unit 2" href="Unit_2.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> RITx: CYBER501x Cybersecurity Fundamentals - Personal study notes
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Unit_2.html">Unit 2</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Unit 3</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#symmetric-encryption">Symmetric encryption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#asymmetric-encryption">Asymmetric encryption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#hashing">Hashing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#certificate-authority">Certificate Authority</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RITx: CYBER501x Cybersecurity Fundamentals - Personal study notes</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Unit 3</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/Unit_3.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="unit-3">
+<h1>Unit 3<a class="headerlink" href="#unit-3" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><strong>Cryptography</strong> is the practice and science of secure communication techniques.</p></li>
+<li><p><strong>Cryptanalysis</strong> is the science of breaking cryptographic systems, codes, and algorithms.</p></li>
+<li><p><strong>Cryptology</strong> refers to the scientific and mathematical study of both cryptography and cryptanalysis.</p></li>
+<li><p><strong>Plaintext</strong> is a message or a file of any type in human readable form.</p></li>
+<li><p>Plaintext and a key, a string of 1s and 0s, are inserted into a cipher, an encryption algorithm that converts the plaintext into unreadable output known as <strong>ciphertext</strong>.</p></li>
+</ul>
+<p>Algorithms are well-known, and they are never secret; keys are guarded and kept secret. Confidentiality depends fully on the key.</p>
+<p>When you rely on the secrecy of the design and the implementation of a system as your security. Thinking you’re achieving security like this is called security through obscurity. Kerckhoff’s principle believes only secrecy of the key provides security.</p>
+<p>Encryption comes in two forms, as do the keys:</p>
+<div class="section" id="symmetric-encryption">
+<h2>Symmetric encryption<a class="headerlink" href="#symmetric-encryption" title="Permalink to this headline">¶</a></h2>
+<p>uses one key, the same key for encrypting and decrypting. It’s very fast, but there’s a key distribution problem.</p>
+<p>Older symmetric encryption algorithms include DES, 3DES, and RC4. Advanced Encryption Standard, AES, is the government-adopted and worldwide symmetric encryption algorithm used today.</p>
+</div>
+<div class="section" id="asymmetric-encryption">
+<h2>Asymmetric encryption<a class="headerlink" href="#asymmetric-encryption" title="Permalink to this headline">¶</a></h2>
+<p>uses two keys, one called a public key, the other one called a private key. When you encrypt with the public key, the ciphertext can only be decrypted with the private key. When you encrypt with a private key, the ciphertext can only be decrypted with the public key.</p>
+<p>RSA – named after its inventors Rivest, Shamir, and Adleman – is the most widely used asymmetric encryption algorithm. It’s used for SSL/TLS – secure sockets layer/transport layer security.</p>
+</div>
+<div class="section" id="hashing">
+<h2>Hashing<a class="headerlink" href="#hashing" title="Permalink to this headline">¶</a></h2>
+<p>Hashing provides integrity that messages that are sent are the messages that are received. Hashing makes sure no bits have been changed either accidentally or maliciously in transit. Hashing algorithms have a few characteristics:</p>
+<ul class="simple">
+<li><p>Different size of input, produce the same size output (message digest)</p></li>
+<li><p>If one bit in the input changes, the resulted hash is completely different.</p></li>
+<li><p>Hashes are called one-way functions because it’s not feasible to try all possible combinations in a realistic amount of time.</p></li>
+</ul>
+<p>Hashing standards:</p>
+<ul class="simple">
+<li><p>MD5 and more recently SHA-1 should be retiredand because it becomes easy to find multiple inputs that produce the same output message digest.</p></li>
+<li><p>SHA-2s, SHA-256 and SHA-512 and even SHA-3 variants are not appropriate for passwords because they’re too quick for hackers attempting brute force attacks with today’s graphics processing units.</p></li>
+<li><p>PBKDF2. Bcrypt and Scrypt which use SHA functions as part of their algorithms as well as Argon2 should be the only functions used for hashing passwords. Because this key stretching functions are significantly slower with tens or hundreds of thousands additional rounds.</p></li>
+</ul>
+</div>
+<div class="section" id="certificate-authority">
+<h2>Certificate Authority<a class="headerlink" href="#certificate-authority" title="Permalink to this headline">¶</a></h2>
+<p>A certificate authority or CA is a corporation that issues digital certificates. A CA is a trusted third party. Both CA Client and its visitors need to trust CA for the system to work. Symantec, Comodo, and GoDaddy are the top three certificate authorities today.</p>
+<p>The CA constructs a digital certificate, signs it, and gives it to Client to put in the root of their web server. When a visitor goes to the bank’s website, Client presents this digital certificate to the visitor.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="Unit_2.html" class="btn btn-neutral float-left" title="Unit 2" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Richard von Kellner
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

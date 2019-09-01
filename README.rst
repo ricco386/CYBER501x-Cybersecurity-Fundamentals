@@ -5,8 +5,8 @@ This are my personal notes taken during the course `RITx: CYBER501x Cybersecurit
 
 Feel free to use them during your study and if you find it useful you can star this repository. If you find a mistake or you think I have  missed something important I am more than happy to accept RP on this repo.
 
-`Unit 2 <Unit_2.rst>`_
-`Unit 3 <Unit_3.rst>`_
+* `Unit 2 <Unit_2.rst>`_
+* `Unit 3 <Unit_3.rst>`_
 
 Richard von Kellner
 

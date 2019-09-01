@@ -6,9 +6,9 @@ CIA model
 
 Respresents three important goals for cybersecurity:
 
-* **C**onfidentiality: Restrictions who can access what (done via encryption)
-* **I**ntegrity: Data has not been changed from its original form (done via hashing)
-* **A**vailability: Systems are accessible at all time (done via full tolerance and load balancing)
+* **Confidentiality**: Restrictions who can access what (done via encryption)
+* **Integrity**: Data has not been changed from its original form (done via hashing)
+* **Availability**: Systems are accessible at all time (done via full tolerance and load balancing)
 
 AAA model
 =========
@@ -19,6 +19,7 @@ Authentication
 When you claim you are someone, that's called identification. When you prove it, that's authentication.
 
 Authentication requires proof in one of three possible forms:
+
 * Something you know, like a password
 * something you have, like a key
 * something you are -- biometrics
@@ -46,6 +47,7 @@ From a cybersecurity perspective, you are looking to protect assets -- things th
 Risk is the combination of the probability of an event or loss from zero to 100% and its consequence or impact. You could reduce or mitigate the risk. We can eliminate some vulnerabilities and block some threats, but nothing is ever going to be 100%. Another thing you can do to risk is transfer it. You can purchase cybersecurity insurance, or use cloud computing and another company's resources. Last but not least, we can accept the risk. Does the cost to protect a resource outweigh the cost of losing it or even replacing it? If so, accepting the risk might make the most sense.
 
 Before you spend your time and money, ask yourself the following questions:
+
 * What are the critical assets? What business processes require these assets?
 * What could interfere with normal operations? What are the risks?
 * Which ones present the highest and most negative outcomes and should be prioritized?

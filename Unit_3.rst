@@ -37,6 +37,7 @@ Hashing provides integrity that messages that are sent are the messages that are
 * Hashes are called one-way functions because it's not feasible to try all possible combinations in a realistic amount of time.
 
 Hashing standards:
+
 * MD5 and more recently SHA-1 should be retiredand because it becomes easy to find multiple inputs that produce the same output message digest.
 * SHA-2s, SHA-256 and SHA-512 and even SHA-3 variants are not appropriate for passwords because they're too quick for hackers attempting brute force attacks with today's graphics processing units.
 * PBKDF2. Bcrypt and Scrypt which use SHA functions as part of their algorithms as well as Argon2 should be the only functions used for hashing passwords. Because this key stretching functions are significantly slower with tens or hundreds of thousands additional rounds.

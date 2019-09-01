@@ -5,7 +5,7 @@ This are my personal notes taken during the course `RITx: CYBER501x Cybersecurit
 
 Feel free to use them during your study and if you find it useful you can star this repository. If you find a mistake or you think I have  missed something important I am more than happy to accept RP on this repo.
 
-Notes are written in Sphinx documentation format. You can visit build notes at url:
+Notes are written in `Sphinx <https://www.sphinx-doc.org/en/master/>`_ documentation format. You can visit build notes at url: https://ricco386.github.io/CYBER501x-Cybersecurity-Fundamentals/
 
 How to build the notes
 ======================

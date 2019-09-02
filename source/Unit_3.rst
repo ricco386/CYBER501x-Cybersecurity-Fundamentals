@@ -1,5 +1,5 @@
-Unit 3
-~~~~~~
+Unit 3 - Cryptography
+~~~~~~~~~~~~~~~~~~~~~
 
 * **Cryptography** is the practice and science of secure communication techniques.
 * **Cryptanalysis** is the science of breaking cryptographic systems, codes, and algorithms.

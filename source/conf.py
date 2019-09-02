@@ -18,7 +18,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'RITx: CYBER501x Cybersecurity Fundamentals - Personal study notes'
-copyright = '2019, Richard von Kellner'
+copyright = '2019, Richard von Kellner. MIT License.'
 author = 'Richard von Kellner'
 
 

@@ -155,16 +155,48 @@
            <div itemprop="articleBody">
             
   <div class="section" id="unit-4-networking-1">
-<h1>Unit 4 - Networking 1<a class="headerlink" href="#unit-4-networking-1" title="Permalink to this headline">¶</a></h1>
+<span id="unit4"></span><h1>Unit 4 - Networking 1<a class="headerlink" href="#unit-4-networking-1" title="Permalink to this headline">¶</a></h1>
 <p>Computing devices directly deliver messages for other devices on the same network through switches. Switches connect devices of the same network together. However, computing devices rely on a router to communicate with devices on different networks.</p>
 <div class="section" id="mac-and-ip-addresses">
-<h2>MAC and IP Addresses<a class="headerlink" href="#mac-and-ip-addresses" title="Permalink to this headline">¶</a></h2>
-<p><strong>MAC – media access control.</strong></p>
+<span id="unit4-mac-and-ip"></span><h2>MAC and IP Addresses<a class="headerlink" href="#mac-and-ip-addresses" title="Permalink to this headline">¶</a></h2>
+<p id="unit4-mac"><strong>MAC – media access control.</strong></p>
 <p>MAC addresses are physical addresses are physical addresses burned into the NIC (network interface card) which is the chip through which all network communications enters and exits a machine. MAC addresses are 48 bits long, represented with 12 base 16 hexadecimal characters, and are separated into two sections. The first six hex characters represent the manufacturer of the NIC assigned by the I triple E – the Institute of Electrical and Electronic Engineers. The last six hex characters, the device ID, is a unique value assigned to a manufacturer to each of its NICs. MAC addresses are unique.</p>
-<p><strong>IP – internet protocol.</strong></p>
+<p id="unit4-ip"><strong>IP – internet protocol.</strong></p>
 <p>IPv4 addresses are logical addresses, bound to NICs through software. They are 32 bit addresses, represented with four base 10 decimal numbers, and are also separated into two sections. The first section represents the network ID, the starting string of bits that all nodes on a shared network have in common. The second section represents a host ID, for each host on a shared network. An entity known as a subnet mask (another 32 bit value) identifies where the breakup of network ID and host ID occurs.</p>
 <div class="section" id="subnet-masks">
-<h3>Subnet Masks<a class="headerlink" href="#subnet-masks" title="Permalink to this headline">¶</a></h3>
+<span id="unit-4-subnet-mask"></span><h3>Subnet Masks<a class="headerlink" href="#subnet-masks" title="Permalink to this headline">¶</a></h3>
+<p>Host A with IP address 10.10.1.1 wants to communicate with host B whose IP address is 10.10.1.2. The host A will take its IP address in subnet mask and perform a boolean <strong>AND</strong> operation. All 32 bits of the IP address are lined up with the 32 bits of the subnet mask. In this case, the subnet mask of the source 10.10.1.1 is 255.255.255.0 in base 10. In binary, it looks like 24 ones followed by 8 zeros. This means that the first 24 of the 32 bits are network bits and are shared by every device on this network. The last eight bits are host bits and are unique in entirety to each host on this network.</p>
+<dl>
+<dt>::</dt><dd><p>Host A
+10.10.1.1       00001010.00001010.00000001.0000001      &lt;- Host A IP address
+255.255.255.0   11111111.11111111.11111111.0000000      &lt;- Subnet Mask</p>
+<blockquote>
+<div></div></blockquote>
+<p>10.10.1.0       00001010.00001010.00000001.0000000      &lt;- Network Identifier</p>
+<blockquote>
+<div><blockquote>
+<div><p>Octet</p>
+</div></blockquote>
+</div></blockquote>
+</dd>
+</dl>
+<p>Each of the four base 10 numbers is known as an octet because each number is represented by eight bits in binary. Subnet masks can span multiple octets and need not be contained to a multiple of eight bits.</p>
+<p>No matter how many host bits are in an IP address, if they are all zeros that represents a <strong>network identifier and cannot be assigned to a host</strong>. They can’t be all ones either because when all host bits are set to one that represents a <strong>network broadcast address cannot be assigned to hosts</strong>.</p>
+<dl class="simple">
+<dt>::</dt><dd><p>10.10.1.255     00001010.00001010.00000001.11111111      &lt;- Network Broadcast</p>
+</dd>
+</dl>
+<p>If the host A (source) needs to determine if the host B (destination) is on the same network or a different one by performing a second boolean <strong>AND</strong> operation. The source takes the destination IP address and logically ends it with the sources own subnet mask.</p>
+<dl>
+<dt>::</dt><dd><p>Host B
+10.10.1.2       00001010.00001010.00000001.0000010      &lt;- Host B IP address
+255.255.255.0   11111111.11111111.11111111.0000000      &lt;- Subnet Mask</p>
+<blockquote>
+<div></div></blockquote>
+<p>10.10.1.0       00001010.00001010.00000001.0000000      &lt;- Network Identifier</p>
+</dd>
+</dl>
+<p>This lets the source know that the destination is on the same network and traffic can be delivered directly. The destination’s IP address is either known by the source or resolved from its name using DNS, domain name system.</p>
 </div>
 </div>
 </div>

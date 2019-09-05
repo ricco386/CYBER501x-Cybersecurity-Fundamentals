@@ -1,5 +1,9 @@
+.. _unit2:
+
 Unit 2 - Computing Security Concepts and Problems
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. _unit2_cia_model:
 
 CIA model
 =========
@@ -10,8 +14,12 @@ Respresents three important goals for cybersecurity:
 * **Integrity**: Data has not been changed from its original form (done via hashing)
 * **Availability**: Systems are accessible at all time (done via full tolerance and load balancing)
 
+.. _unit2_aaa_model:
+
 AAA model
 =========
+
+.. _unit2_aaa_model_authentication:
 
 Authentication
 --------------
@@ -26,6 +34,8 @@ Authentication requires proof in one of three possible forms:
 
 Combine more than one of these categories, that's called multifactor authentication, and that really is the future of authentication. Combination of authentication methods is known as **2FA or two-factor authentication**.
 
+.. _unit2_aaa_model_authorization:
+
 Authorization
 -------------
 
@@ -34,10 +44,14 @@ we let him see certain things but not others.
 
 Principle of least privilege, which states users and even devices, programs, and processes should be granted enough permissions to do their required functions and not a single drop more.
 
+.. _unit2_aaa_model_accounting:
+
 Accounting
 ----------
 
 Keeping track of users and their actions is very important. From a forensics perspective, tracing back to events leading up to a cybersecurity incident can prove very valuable to an investigation.
+
+.. _unit2_threat_agents:
 
 Threat Agents
 =============

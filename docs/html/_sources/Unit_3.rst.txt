@@ -1,3 +1,5 @@
+.. _unit3:
+
 Unit 3 - Cryptography
 ~~~~~~~~~~~~~~~~~~~~~
 
@@ -13,6 +15,8 @@ When you rely on the secrecy of the design and the implementation of a system as
 
 Encryption comes in two forms, as do the keys:
 
+.. _unit3_symetric_encryption:
+
 Symmetric encryption
 ====================
 
@@ -20,12 +24,16 @@ uses one key, the same key for encrypting and decrypting. It's very fast, but th
 
 Older symmetric encryption algorithms include DES, 3DES, and RC4. Advanced Encryption Standard, AES, is the government-adopted and worldwide symmetric encryption algorithm used today.
 
+.. _unit3_asymetric_encryption:
+
 Asymmetric encryption
 =====================
 
 uses two keys, one called a public key, the other one called a private key. When you encrypt with the public key, the ciphertext can only be decrypted with the private key. When you encrypt with a private key, the ciphertext can only be decrypted with the public key.
 
 RSA -- named after its inventors Rivest, Shamir, and Adleman -- is the most widely used asymmetric encryption algorithm. It's used for SSL/TLS -- secure sockets layer/transport layer security.
+
+.. _unit3_hashing:
 
 Hashing
 =======
@@ -41,6 +49,8 @@ Hashing standards:
 * MD5 and more recently SHA-1 should be retiredand because it becomes easy to find multiple inputs that produce the same output message digest.
 * SHA-2s, SHA-256 and SHA-512 and even SHA-3 variants are not appropriate for passwords because they're too quick for hackers attempting brute force attacks with today's graphics processing units.
 * PBKDF2. Bcrypt and Scrypt which use SHA functions as part of their algorithms as well as Argon2 should be the only functions used for hashing passwords. Because this key stretching functions are significantly slower with tens or hundreds of thousands additional rounds.
+
+.. _unit3_certificate_authority:
 
 Certificate Authority
 =====================

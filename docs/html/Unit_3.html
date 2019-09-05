@@ -156,7 +156,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="unit-3-cryptography">
-<h1>Unit 3 - Cryptography<a class="headerlink" href="#unit-3-cryptography" title="Permalink to this headline">¶</a></h1>
+<span id="unit3"></span><h1>Unit 3 - Cryptography<a class="headerlink" href="#unit-3-cryptography" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p><strong>Cryptography</strong> is the practice and science of secure communication techniques.</p></li>
 <li><p><strong>Cryptanalysis</strong> is the science of breaking cryptographic systems, codes, and algorithms.</p></li>
@@ -168,17 +168,17 @@
 <p>When you rely on the secrecy of the design and the implementation of a system as your security. Thinking you’re achieving security like this is called security through obscurity. Kerckhoff’s principle believes only secrecy of the key provides security.</p>
 <p>Encryption comes in two forms, as do the keys:</p>
 <div class="section" id="symmetric-encryption">
-<h2>Symmetric encryption<a class="headerlink" href="#symmetric-encryption" title="Permalink to this headline">¶</a></h2>
+<span id="unit3-symetric-encryption"></span><h2>Symmetric encryption<a class="headerlink" href="#symmetric-encryption" title="Permalink to this headline">¶</a></h2>
 <p>uses one key, the same key for encrypting and decrypting. It’s very fast, but there’s a key distribution problem.</p>
 <p>Older symmetric encryption algorithms include DES, 3DES, and RC4. Advanced Encryption Standard, AES, is the government-adopted and worldwide symmetric encryption algorithm used today.</p>
 </div>
 <div class="section" id="asymmetric-encryption">
-<h2>Asymmetric encryption<a class="headerlink" href="#asymmetric-encryption" title="Permalink to this headline">¶</a></h2>
+<span id="unit3-asymetric-encryption"></span><h2>Asymmetric encryption<a class="headerlink" href="#asymmetric-encryption" title="Permalink to this headline">¶</a></h2>
 <p>uses two keys, one called a public key, the other one called a private key. When you encrypt with the public key, the ciphertext can only be decrypted with the private key. When you encrypt with a private key, the ciphertext can only be decrypted with the public key.</p>
 <p>RSA – named after its inventors Rivest, Shamir, and Adleman – is the most widely used asymmetric encryption algorithm. It’s used for SSL/TLS – secure sockets layer/transport layer security.</p>
 </div>
 <div class="section" id="hashing">
-<h2>Hashing<a class="headerlink" href="#hashing" title="Permalink to this headline">¶</a></h2>
+<span id="unit3-hashing"></span><h2>Hashing<a class="headerlink" href="#hashing" title="Permalink to this headline">¶</a></h2>
 <p>Hashing provides integrity that messages that are sent are the messages that are received. Hashing makes sure no bits have been changed either accidentally or maliciously in transit. Hashing algorithms have a few characteristics:</p>
 <ul class="simple">
 <li><p>Different size of input, produce the same size output (message digest)</p></li>
@@ -193,7 +193,7 @@
 </ul>
 </div>
 <div class="section" id="certificate-authority">
-<h2>Certificate Authority<a class="headerlink" href="#certificate-authority" title="Permalink to this headline">¶</a></h2>
+<span id="unit3-certificate-authority"></span><h2>Certificate Authority<a class="headerlink" href="#certificate-authority" title="Permalink to this headline">¶</a></h2>
 <p>A certificate authority or CA is a corporation that issues digital certificates. A CA is a trusted third party. Both CA Client and its visitors need to trust CA for the system to work. Symantec, Comodo, and GoDaddy are the top three certificate authorities today.</p>
 <p>The CA constructs a digital certificate, signs it, and gives it to Client to put in the root of their web server. When a visitor goes to the bank’s website, Client presents this digital certificate to the visitor.</p>
 </div>

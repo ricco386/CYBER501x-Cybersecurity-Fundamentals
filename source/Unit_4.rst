@@ -14,8 +14,8 @@ MAC (media access control) addresses are physical addresses are physical address
 
 .. _unit4_ip:
 
-IP Addresses
-------------
+IP Address
+----------
 
 IPv4 (internet protocol) addresses are logical addresses, bound to NICs through software. They are 32 bit addresses, represented with four base 10 decimal numbers, and are also separated into two sections. The first section represents the network ID, the starting string of bits that all nodes on a shared network have in common. The second section represents a host ID, for each host on a shared network. An entity known as a :ref:`unit4_subnet_mask` (another 32 bit value) identifies where the breakup of network ID and host ID occurs.
 
@@ -73,13 +73,13 @@ Address Resolution Protocol
 
 For local traffic, the source needs the :ref:`unit4_mac` of the destination. The source puts the actual traffic on hold and sends out a broadcast message using a protocol known as ARP, address resolution protocol. ARP is meant to resolve a known :ref:`unit4_ip` to the :ref:`unit4_mac` that it is bound to in software.
 
-The message in the ARP request explains that host A 10.10.1.1 is looking for them MAC address of 10.10.1.2. All devices on the network not only see this ARP request but they read it as well. Every device, except Host B discards the message. Host B 10.10.1.2 sends an ARP reply back to host A 10.10.1.1. The **ARP reply is unicast**, which means it only goes to 10.10.1.1 and is not broadcasted to the network. In the ARP request, the source listed its MAC address so the destination didn't need to broadcast to find out the sources MAC address.
+The message in the ARP request explains that host A 10.10.1.1 is looking for them :ref:`unit4_mac` of 10.10.1.2. All devices on the network not only see this ARP request but they read it as well. Every device, except Host B discards the message. Host B 10.10.1.2 sends an ARP reply back to host A 10.10.1.1. The **ARP reply is unicast**, which means it only goes to 10.10.1.1 and is not broadcasted to the network. In the ARP request, the source listed its :ref:`unit4_mac` so the destination didn't need to broadcast to find out the sources :ref:`unit4_mac`.
 
 .. note::
 
         Broadcast on networks are bad. Unfortunately, in the world of IPv4, there is no other way to do this.
 
-After the ARP reply comes back to host A with host B's :ref:`unit4_mac`, host A can now fill-in the destination's :ref:`unit4_mac` and send the traffic. The source and destination :ref:`MAC addresses <unit4_mac>` are two of the fields found in the layer 2 frame while the source and destination :ref:`IP addresses <unit4_ip>` are a couple of the fields in the IP packet.
+After the ARP reply comes back to host A with host B's :ref:`unit4_mac`, host A can now fill-in the destination's :ref:`unit4_mac` and send the traffic. The source and destination :ref:`MAC addresses <unit4_mac>` are two of the fields found in the `Layer 2 <https://en.wikipedia.org/wiki/Data_link_layer>`_ `frame <https://en.wikipedia.org/wiki/Frame_(networking)>`_ while the source and destination :ref:`IP addresses <unit4_ip>` are a couple of the fields in the IP packet.
 
 .. _unit4_remote_communication:
 
@@ -139,9 +139,11 @@ Routing tables
 
 Routers maintain tables called, routing tables that contain destination networks and directions for the router, who to send the traffic to next.
 
+.. _unit4_icmp:
+
 If the routers routing table doesn't have knowledge of the destination network, it can have a default route which means a specific router interface on a different router to send traffic to. Without knowledge of the destination network or a default route, a router will drop a packet and send an error message back to the source through a protocol known as **ICMP, Internet control message protocol**.
 
-Host A's :ref:`unit4_default_gateway` looks in its routing table and sees that the next router interface the packet should go to is the left interface of Router B. If the routers are connected by the Ethernet infrastructure, the same :ref:`ARP process <unit4_arp>` takes place. If the interconnection between routers doesn't use Ethernet, a different frame type is used.
+Host A's :ref:`unit4_default_gateway` looks in its routing table and sees that the next router interface the packet should go to is the left interface of Router B. If the routers are connected by the Ethernet infrastructure, the same :ref:`ARP process <unit4_arp>` takes place. If the interconnection between routers doesn't use Ethernet, a different `frame <https://en.wikipedia.org/wiki/Frame_(networking)>`_ type is used.
 
 Router A routing table:
 
@@ -156,13 +158,13 @@ Network       Next Hop IP address
 
 Router A sends an :ref:`ARP request <unit4_arp>`, a broadcast heard and read by every device on the network, looking for :ref:`unit4_ip` 10.10.2.99, send me your :ref:`unit4_mac`. The left interface of Router B sends a unicast :ref:`ARP reply <unit4_arp>` back to R1 with its :ref:`unit4_mac`.
 
-Router A re-encapsulates the original packet sent from Host A to Host X with a new frame. The new source MAC address represents the right interface of Router A, and the new destination MAC address represents the left interface of Router B.
+Router A re-encapsulates the original packet sent from Host A to Host X with a new `frame <https://en.wikipedia.org/wiki/Frame_(networking)>`_. The new source :ref:`unit4_mac` represents the right interface of Router A, and the new destination :ref:`unit4_mac` represents the left interface of Router B.
 
-Router B accepts the frame on its left interface, sees that the MAC address is its MAC address, then Router B inspects the destination IP address and it isn't its IP address. Router B's right interface then ARPs looking for the MAC address of Router C's left interface.
+Router B accepts the `frame <https://en.wikipedia.org/wiki/Frame_(networking)>`_ on its left interface, sees that the :ref:`unit4_mac` is its :ref:`unit4_mac`, then Router B inspects the destination :ref:`unit4_ip` and it isn't its :ref:`unit4_ip`. Router B's right interface then ARPs looking for the :ref:`unit4_mac` of Router C's left interface.
 
-After the ARP reply comes back, the new source MAC of the frame is the right interface of Router B. And the new destination MAC is the left interface of Router C. Then Router C's right interface finishes it off by actually ARPing for the destination since the right interface of R3 is actually on the destination's network.
+After the ARP reply comes back, the new source MAC of the `frame <https://en.wikipedia.org/wiki/Frame_(networking)>`_ is the right interface of Router B. And the new destination MAC is the left interface of Router C. Then Router C's right interface finishes it off by actually ARPing for the destination since the right interface of R3 is actually on the destination's network.
 
-The final frame has a source MAC address of the right interface of Router C and a destination MAC address of the actual destination, Host X. The destination gets the frame, sees its MAC address, opens it up, and confirms IP address.
+The final `frame <https://en.wikipedia.org/wiki/Frame_(networking)>`_ has a source :ref:`unit4_mac` of the right interface of Router C and a destination :ref:`unit4_mac` of the actual destination, Host X. The destination gets the `frame <https://en.wikipedia.org/wiki/Frame_(networking)>`_, sees its :ref:`unit4_mac`, opens it up, and confirms :ref:`unit4_ip`.
 
 The IP header is now stripped off and the higher layer data is sent up the networking stack on the destination for processing.
 
@@ -170,17 +172,17 @@ The IP header is now stripped off and the higher layer data is sent up the netwo
 MAC and IP Addresses Used Together
 ==================================
 
-MAC addresses are only locally significant and are definitely needed in addition to IP addresses to specify the next hop to receive the packet and route to its final destination.
+:ref:`MAC addresses <unit4_mac>` are only locally significant and are definitely needed in addition to :ref:`unit4_ip` to specify the next hop to receive the packet and route to its final destination.
 
-Every time a packet passes through an interface, the frame is stripped off and discarded and after the next router figures out the next hop, the packet is reframed with a new outer frame.
+Every time a packet passes through an interface, the `frame <https://en.wikipedia.org/wiki/Frame_(networking)>`_ is stripped off and discarded and after the next router figures out the next hop, the packet is reframed with a new outer `frame <https://en.wikipedia.org/wiki/Frame_(networking)>`_.
 
 Binding IP Addresses to MAC Addresses
 =====================================
 
-MAC addresses alone wouldn't be enough for network communications. They are not hierarchical, but rather flat addresses.
+:ref:`MAC addresses <unit4_mac>` alone wouldn't be enough for network communications. They are not hierarchical, but rather flat addresses.
 
-IP addresses alone wouldn't be enough for network communications either. These logical addresses are leased to client devices on a dynamic basis. In most cases, they're even geographical with IP address numbers representing different parts of the world.
+:ref:`IP addresses <unit4_ip>` alone wouldn't be enough for network communications either. These logical addresses are leased to client devices on a dynamic basis. In most cases, they're even geographical with :ref:`unit4_ip` numbers representing different parts of the world.
 
-The logical IP addresses can be bound to and associated with a device as MAC address for a duration of time. That's how we keep track of which device is temporarily using an IP address of a network at any point in time.
+The logical :ref:`unit4_ip` can be bound to and associated with a device as :ref:`unit4_mac` for a duration of time. That's how we keep track of which device is temporarily using an :ref:`unit4_ip` of a network at any point in time.
 
-An IP address, a MAC address, you simply can't have one without the other.
+An :ref:`unit4_ip`, a :ref:`unit4_mac`, you simply can't have one without the other.

@@ -1,0 +1,306 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Unit 5 - Networking 2 &mdash; RITx: CYBER501x Cybersecurity Fundamentals - Personal study notes  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Unit 4 - Networking 1" href="Unit_4.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> RITx: CYBER501x Cybersecurity Fundamentals - Personal study notes
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Unit_2.html">Unit 2 - Computing Security Concepts and Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_3.html">Unit 3 - Cryptography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_4.html">Unit 4 - Networking 1</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Unit 5 - Networking 2</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#ports">Ports</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#tcp-transmission-control-protocol">TCP - Transmission Control Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#udp-user-datagram-protocol">UDP - User Datagram Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rtsp-real-time-streaming-protocol">RTSP - Real Time Streaming Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-switches-work">How Switches Work</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#autonomous-systems">Autonomous Systems</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dynamic-routing">Dynamic Routing</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#igp-interior-gateway-protocol">IGP - Interior Gateway protocol</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ospf-open-shortest-path-first">OSPF - Open Shortest Path First</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#eigrp-enhanced-interior-gateway-routing-protocol">EIGRP - Enhanced Interior Gateway Routing Protocol</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#egp-exterior-gateway-protocol">EGP - Exterior Gateway Protocol</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#bgp-border-gateway-protocol">BGP - Border Gateway Protocol</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RITx: CYBER501x Cybersecurity Fundamentals - Personal study notes</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Unit 5 - Networking 2</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/Unit_5.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="unit-5-networking-2">
+<span id="unit5"></span><h1>Unit 5 - Networking 2<a class="headerlink" href="#unit-5-networking-2" title="Permalink to this headline">¶</a></h1>
+<p>The way network communication goes in and out of a machine physically is through the NIC, network interface card. The way network communication goes in and out of a machine logically, though, is through a program or service. <strong>A service is a program that runs in the background, independent of a log on that provides functionalities to a system.</strong> When you start a web server, you’re starting a specific server service that isn’t tied to a specific user log on either. This way, when the server reboots, the service automatically starts before anyone logs on. In the world of Linux, services are known as daemons.</p>
+<div class="section" id="ports">
+<span id="unit5-ports"></span><h2>Ports<a class="headerlink" href="#ports" title="Permalink to this headline">¶</a></h2>
+<p>Multiple services are running on the same host (they have the same <a class="reference internal" href="Unit_4.html#unit4-ip"><span class="std std-ref">IP Address</span></a>), traffic for each service is determined by the the service port. <strong>A port is a logical end point of communication that identifies a program or service and is represented by a port number.</strong> So in addition to source and destination <a class="reference internal" href="Unit_4.html#unit4-mac"><span class="std std-ref">MAC addresses</span></a> and source and destination <a class="reference internal" href="Unit_4.html#unit4-ip"><span class="std std-ref">IP addresses</span></a>, there are, source and destination ports.</p>
+<p>Mac addresses are found in <a class="reference external" href="https://en.wikipedia.org/wiki/Frame_(networking)">frames</a> at layer two of the <a class="reference external" href="https://en.wikipedia.org/wiki/OSI_model">OSI model</a>. <a class="reference internal" href="Unit_4.html#unit4-ip"><span class="std std-ref">IP addresses</span></a> are found in packets at layer three. Port numbers are found in either <a class="reference internal" href="#unit5-tcp"><span class="std std-ref">TCP</span></a> segments or <a class="reference internal" href="#unit5-udp"><span class="std std-ref">UDP</span></a> datagrams at <a class="reference external" href="https://en.wikipedia.org/wiki/Transport_layer">layer four</a>. Based on the destination port, the destination machine knows which program or service to send the data.</p>
+<ul class="simple">
+<li><p>Well-known ports from zero to 1,023 are used by major protocols and services.</p></li>
+<li><p>Registered ports from 1,024 to 49,151 are assigned by IANA, the Internet Assigned Numbers Authority, for specific companies that want a common port to be used for their programs or protocols.</p></li>
+<li><p>Dynamic ports from 49,152 to 65,535 are used by client applications on an as-needed basis.</p></li>
+</ul>
+<p>For example, your browser might open up port 60,000 to send a request to a web server that will be listening for requests on port 80, unencrypted HTTP. The web server’s response is sourced from port 80 and is destined for the port that your browser opened up. After the communication between your browser and the web server is complete, your browser will close the port it opened. But the web server’s port will remain open for new incoming connections.</p>
+<p>One of two protocols will be used at <a class="reference external" href="https://en.wikipedia.org/wiki/Transport_layer">Layer 4</a> of the <a class="reference external" href="https://en.wikipedia.org/wiki/OSI_model">OSI model</a> to encapsulate the data coming from <a class="reference external" href="https://en.wikipedia.org/wiki/Session_layer">Layers 5</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/Presentation_layer">6</a>, and <a class="reference external" href="https://en.wikipedia.org/wiki/Application_layer">7</a>.</p>
+<p><a class="reference internal" href="#unit5-tcp"><span class="std std-ref">TCP</span></a>, Transmission Control Protocol segments, or <a class="reference internal" href="#unit5-udp"><span class="std std-ref">UDP</span></a>, User Datagram Protocol datagrams, will be selected by an application that’s sending data.</p>
+</div>
+<div class="section" id="tcp-transmission-control-protocol">
+<span id="unit5-tcp"></span><h2>TCP - Transmission Control Protocol<a class="headerlink" href="#tcp-transmission-control-protocol" title="Permalink to this headline">¶</a></h2>
+<p>TCP establishes a connection between the source and destination devices for reliable data transfer and flow control, sending data at an acceptable rate, both to the source and destination.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>TCP guarantees that every single byte sent will be received with integrity and processed in the correct order.</p>
+</div>
+<p>TCP segments are acknowledged. So the sender knows the destination got the traffic. If an acknowledgment specifically referencing byte numbers of the data sent doesn’t come back, TCP resends the unacknowledged bytes.</p>
+<p>TCP is used for things like file transfers, email, and going to websites. In those cases, accuracy is important. If bytes are lost or corrupted, the whole message could be destroyed.</p>
+</div>
+<div class="section" id="udp-user-datagram-protocol">
+<span id="unit5-udp"></span><h2>UDP - User Datagram Protocol<a class="headerlink" href="#udp-user-datagram-protocol" title="Permalink to this headline">¶</a></h2>
+<p>UDP is connectionless and has no flow control. All bytes sent with TCP are ordered and sequenced.</p>
+<p>UDP is used for real-time communications, conferencing and streaming. Furthermore, two major protocols DNS and DHCP, both use UDP.</p>
+</div>
+<div class="section" id="rtsp-real-time-streaming-protocol">
+<span id="unit5-rstp"></span><h2>RTSP - Real Time Streaming Protocol<a class="headerlink" href="#rtsp-real-time-streaming-protocol" title="Permalink to this headline">¶</a></h2>
+<p>RSTP which exists at <a class="reference external" href="https://en.wikipedia.org/wiki/Application_layer">Layer 7</a>, does the ordering of the packets for <a class="reference internal" href="#unit5-udp"><span class="std std-ref">UDP</span></a>. Using RTSP just for the ordering of the <a class="reference internal" href="#unit5-udp"><span class="std std-ref">UDP</span></a> datagrams involves significantly less overhead than <a class="reference internal" href="#unit5-tcp"><span class="std std-ref">TCP</span></a> would require.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#unit5-tcp"><span class="std std-ref">TCP</span></a> has much more overhead than <a class="reference internal" href="#unit5-udp"><span class="std std-ref">UDP</span></a> and is deliberately slower, striving for accuracy and integrity. <a class="reference internal" href="#unit5-udp"><span class="std std-ref">UDP</span></a> has no overhead, and it’s quicker, striving for efficiency.</p>
+</div>
+</div>
+<div class="section" id="how-switches-work">
+<span id="unit5-switches"></span><h2>How Switches Work<a class="headerlink" href="#how-switches-work" title="Permalink to this headline">¶</a></h2>
+<p>Switches connect devices of the same network together. They can connect into other switches and routers as well. Switches and PCs connected between router interfaces are considered to be on the same network.</p>
+<p>When a PC sends an Ethernet <a class="reference external" href="https://en.wikipedia.org/wiki/Frame_(networking)">frame</a> into a switch, the switch checks the destination <a class="reference internal" href="Unit_4.html#unit4-mac"><span class="std std-ref">MAC Address</span></a> to see if it knows which interface that <a class="reference internal" href="Unit_4.html#unit4-mac"><span class="std std-ref">MAC Address</span></a> is connected to. If the switch knows where the device with that <a class="reference internal" href="Unit_4.html#unit4-mac"><span class="std std-ref">MAC Address</span></a> is, the switch sends it out, just that interface. If the switch doesn’t know where a destination <a class="reference internal" href="Unit_4.html#unit4-mac"><span class="std std-ref">MAC Address</span></a> is, the switch floods the <a class="reference external" href="https://en.wikipedia.org/wiki/Frame_(networking)">frame</a> out of all interfaces except the interface on which the <a class="reference external" href="https://en.wikipedia.org/wiki/Frame_(networking)">frame</a> originated.</p>
+<p>The switch actually starts off knowing nothing, but as <a class="reference external" href="https://en.wikipedia.org/wiki/Frame_(networking)">frames</a> are sent into the switch, the switch starts learning. If host A sends a <a class="reference external" href="https://en.wikipedia.org/wiki/Frame_(networking)">frame</a> for host B into the interface on the switch, the switch says I know that the <a class="reference internal" href="Unit_4.html#unit4-mac"><span class="std std-ref">MAC Address</span></a> of host A can now be associated with the interface on which it was heard. <strong>The switch will make a note of it through a table in memory called SAT, Source Address Table.</strong></p>
+<p>Since the switch doesn’t know where host B is, it floods the <a class="reference external" href="https://en.wikipedia.org/wiki/Frame_(networking)">frame</a> out of all the interfaces except the one the <a class="reference external" href="https://en.wikipedia.org/wiki/Frame_(networking)">frame</a> originated on. When host B replies, the <a class="reference external" href="https://en.wikipedia.org/wiki/Frame_(networking)">frame</a> goes into the switch. And the switch learns that host B’s interface. The switch then adds the <a class="reference internal" href="Unit_4.html#unit4-mac"><span class="std std-ref">MAC Address</span></a> of host B and the interface it was heard on into its source address table as well. The logic works the same for switches that are connected together.</p>
+<p>If there are 20 connected switches in a network with 20 PCs connected to each of those switches, a single <a class="reference internal" href="Unit_4.html#unit4-arp"><span class="std std-ref">ARP request</span></a> by one of the PCs will be read by the other 399.</p>
+</div>
+<div class="section" id="autonomous-systems">
+<span id="unit5-autonomous-systems"></span><h2>Autonomous Systems<a class="headerlink" href="#autonomous-systems" title="Permalink to this headline">¶</a></h2>
+<p>Routers don’t connect devices of the same network together. They connect different networks together. So you wouldn’t ever see a PC connected to a router.</p>
+<p>If the router has no knowledge of the destination network, it might have a default route of its own to send the packet to. Without either knowledge of a destination network or a default route for a router to send all packets with unknown destinations to, the router will drop the packet, and send an error message back to the source through a protocol known as <strong>ICMP, Internet control message protocol</strong>.</p>
+<p><strong>An autonomous system represents a collection of networks under one administrative control, like an ISP or major entity like RIT.</strong></p>
+<p>Why would a bunch of networks be preferred to a single network?</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="Unit_4.html#unit4-arp"><span class="std std-ref">ARP requests</span></a> and all other broadcast traffic will always reach and be processed by every single device on a network. One reason why we might want multiple networks interconnected by routers instead of one big flat network is to reduce the size of the broadcast domain.</p></li>
+<li><p>For security purposes multiple networks are preferred to one big flat network. Security at the router level in the form of an access control list can be used to filter traffic by source <a class="reference internal" href="Unit_4.html#unit4-ip"><span class="std std-ref">IP Address</span></a>, destination <a class="reference internal" href="Unit_4.html#unit4-ip"><span class="std std-ref">IP Address</span></a>, protocols, and even <a class="reference internal" href="#unit5-ports"><span class="std std-ref">ports</span></a>. This allows you to control access to and from certain devices and resources much better than if everything was on the same network.</p></li>
+<li><p>The troubleshooting process is easier by isolating traffic to a certain network.</p></li>
+</ul>
+<div class="section" id="dynamic-routing">
+<span id="unit5-dynamic-routing"></span><h3>Dynamic Routing<a class="headerlink" href="#dynamic-routing" title="Permalink to this headline">¶</a></h3>
+<p>Entities like RIT registered for and received their own <strong>ASN, Autonomous System Number</strong>. They became autonomous systems of their own, independent of ISPs. This allowed them to maintain routing tables and exchange routing information with multiple ISPs. As traffic is ready to leave the autonomous system, the routers decide which ISP and which ISP connection to send the traffic to for the most efficient packet delivery.</p>
+<p>Inside a company, within an autonomous system, there needs to be a dynamic way in which the routers can exchange information about the internal networks as well as how to get to the company’s edge router that connects to the ISP for packets destined for an external network. This is where <strong>routing protocols</strong> come into play:</p>
+</div>
+</div>
+<div class="section" id="igp-interior-gateway-protocol">
+<span id="unit5-igp"></span><h2>IGP - Interior Gateway protocol<a class="headerlink" href="#igp-interior-gateway-protocol" title="Permalink to this headline">¶</a></h2>
+<p>An IGP is a routing protocol that allows routers within an autonomous system to communicate with each other. Sharing information about the networks they’re directly or indirectly connected to. After these messages are passed between the routers, each router forms an idea of the topology and determines the best way to get to it a destination network.</p>
+<p>Metrics are values that the routers use to determine the best way to get to a destination network when there are multiple paths available.</p>
+<div class="section" id="ospf-open-shortest-path-first">
+<span id="unit5-ospf"></span><h3>OSPF - Open Shortest Path First<a class="headerlink" href="#ospf-open-shortest-path-first" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="eigrp-enhanced-interior-gateway-routing-protocol">
+<span id="unit5-eigrp"></span><h3>EIGRP - Enhanced Interior Gateway Routing Protocol<a class="headerlink" href="#eigrp-enhanced-interior-gateway-routing-protocol" title="Permalink to this headline">¶</a></h3>
+<p>The main metric used by OSPF and EIGRP to determine the best way to get to a destination network is bandwidth although they calculate this metric very differently.</p>
+<p>Using OSPF or EIGRP, a router might choose a path to a destination network with more hops over a path with fewer hops based on the bandwidth. Sending a packet over a greater number of links is preferred if those links and their bandwidth can get the packet to its destination quicker than a smaller number of links.</p>
+</div>
+</div>
+<div class="section" id="egp-exterior-gateway-protocol">
+<span id="unit5-egp"></span><h2>EGP - Exterior Gateway Protocol<a class="headerlink" href="#egp-exterior-gateway-protocol" title="Permalink to this headline">¶</a></h2>
+<p>An EGP is a routing protocol that allows routers from different autonomous systems to communicate with each other and exchange routing information.</p>
+<div class="section" id="bgp-border-gateway-protocol">
+<span id="unit5-bgp"></span><h3>BGP - Border Gateway Protocol<a class="headerlink" href="#bgp-border-gateway-protocol" title="Permalink to this headline">¶</a></h3>
+<p>The only EGP in usage today, which is used across the entire Internet, is BGP.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="Unit_4.html" class="btn btn-neutral float-left" title="Unit 4 - Networking 1" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Richard von Kellner. MIT License.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

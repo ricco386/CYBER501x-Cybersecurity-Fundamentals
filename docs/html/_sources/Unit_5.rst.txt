@@ -46,7 +46,7 @@ UDP - User Datagram Protocol
 
 UDP is connectionless and has no flow control. All bytes sent with TCP are ordered and sequenced.
 
-UDP is used for real-time communications, conferencing and streaming. Furthermore, two major protocols DNS and DHCP, both use UDP.
+UDP is used for real-time communications, conferencing and streaming. Furthermore, two major protocols :ref:`DNS <unit6_dns>` and :ref:`DHCP <unit6_dhcp>`, both use UDP.
 
 .. _unit5_rstp:
 

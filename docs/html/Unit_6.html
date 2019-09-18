@@ -89,7 +89,10 @@
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Unit 6 - Systems Administration</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#rarp-reverse-address-resolution-protocol">RARP - Reverse Address Resolution Protocol</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#bootp-bootstrap-particle">BootP - Bootstrap particle</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#dhcp-dynamic-host-configuration-protocol">DHCP - Dynamic Host Configuration Protocol</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dhcp-dynamic-host-configuration-protocol">DHCP - Dynamic Host Configuration Protocol</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dhcp-s-dora">DHCP’s DORA</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#dns-domain-name-system">DNS - Domain Name System</a></li>
 </ul>
 </li>
@@ -165,7 +168,7 @@
 <span id="unit6-rarp"></span><h2>RARP - Reverse Address Resolution Protocol<a class="headerlink" href="#rarp-reverse-address-resolution-protocol" title="Permalink to this headline">¶</a></h2>
 <p>RARP is reverse <a class="reference internal" href="Unit_4.html#unit4-arp"><span class="std std-ref">ARP</span></a>. A diskless work station would still have a NIC, and therefore a <a class="reference internal" href="Unit_4.html#unit4-mac"><span class="std std-ref">MAC Address</span></a>, and would ask a Reverse ARP server for an <a class="reference internal" href="Unit_4.html#unit4-ip"><span class="std std-ref">IP Address</span></a>.</p>
 <p>Administrators would pre-configure a table on the Revers ARP server matching <a class="reference internal" href="Unit_4.html#unit4-mac"><span class="std std-ref">Mac addresses</span></a> of devices to the <a class="reference internal" href="Unit_4.html#unit4-ip"><span class="std std-ref">IP addresses</span></a> that would be dynamically handed out to them upon request.
-<a class="reference internal" href="Unit_4.html#unit4-arp"><span class="std std-ref">ARP</span></a> matches an <a class="reference internal" href="Unit_4.html#unit4-ip"><span class="std std-ref">IP Address</span></a> to a corresponding <a class="reference internal" href="Unit_4.html#unit4-mac"><span class="std std-ref">MAC Address</span></a>. <strong>Reverse ARP matches a :ref:`unit4_mac` to a corresponding :ref:`unit4_ip`, hence the term “Reverse ARP”.</strong></p>
+<a class="reference internal" href="Unit_4.html#unit4-arp"><span class="std std-ref">ARP</span></a> matches an <a class="reference internal" href="Unit_4.html#unit4-ip"><span class="std std-ref">IP Address</span></a> to a corresponding <a class="reference internal" href="Unit_4.html#unit4-mac"><span class="std std-ref">MAC Address</span></a>. <strong>Reverse ARP matches a</strong> <a class="reference internal" href="Unit_4.html#unit4-mac"><span class="std std-ref">MAC Address</span></a> <strong>to a corresponding</strong> <a class="reference internal" href="Unit_4.html#unit4-ip"><span class="std std-ref">IP Address</span></a> <strong>, hence the term “Reverse ARP”.</strong></p>
 <p>However, the <a class="reference internal" href="Unit_4.html#unit4-mac"><span class="std std-ref">Mac addresses</span></a> still needed to be collected and entered along with the <a class="reference internal" href="Unit_4.html#unit4-ip"><span class="std std-ref">IP Address</span></a> that would be handed out on the Reverse ARP server.</p>
 <p>Another problem with Reverse ARP was that like <a class="reference internal" href="Unit_4.html#unit4-arp"><span class="std std-ref">ARP</span></a>, it was a layer to protocol that existed inside of <a class="reference external" href="https://en.wikipedia.org/wiki/Frame_(networking)">frames</a>. Since there was no IP header, it couldn’t be sent off a network.
 What that meant was that each and every network needed its own Reverse ARP server.</p>
@@ -176,7 +179,7 @@ What that meant was that each and every network needed its own Reverse ARP serve
 This way messages could actually by routed off a network and the need for a server on each and every network was eliminated (unlike in <a class="reference internal" href="#unit6-rarp"><span class="std std-ref">RARP</span></a>).</p>
 <p>A machine would boot up, send a request to the BootP server with its <a class="reference internal" href="Unit_4.html#unit4-mac"><span class="std std-ref">MAC Address</span></a>, and it would be assigned an <a class="reference internal" href="Unit_4.html#unit4-ip"><span class="std std-ref">IP Address</span></a> that the admin chose for that <a class="reference internal" href="Unit_4.html#unit4-mac"><span class="std std-ref">MAC Address</span></a>. Relay agents made this possible.
 Routers don’t forward broadcasts, but part of the BootP sequence involved broadcasting a request to a BootP server, because obviously the client doesn’t have any knowledge of anything at that point in time.</p>
-<p id="unit6-relay-agents">Relay agents were router interfaces on a network, also serving as the full gateways, that took broadcast BootP messages and turned them into unicast messages, relaying them through the normal IP routing process to the prepare BootP servers.
+<p id="unit6-relay-agents"><strong>Relay agents</strong> were router interfaces on a network, also serving as the full gateways, that took broadcast BootP messages and turned them into unicast messages, relaying them through the normal IP routing process to the prepare BootP servers.
 The BootP servers sent responses back to the relay agents, who relayed those messages back to the clients. This way, you can have two BootP server on a single network giving out <a class="reference internal" href="Unit_4.html#unit4-ip"><span class="std std-ref">IP addresses</span></a> for many other networks.</p>
 </div>
 <div class="section" id="dhcp-dynamic-host-configuration-protocol">
@@ -186,6 +189,46 @@ A client machine asks the DHCP server for an <a class="reference internal" href=
 <a class="reference internal" href="Unit_4.html#unit4-mac"><span class="std std-ref">MAC Address</span></a> for a duration of time. This concept is known as a lease.</p>
 <p>DHCP was made to be an extension of <a class="reference internal" href="#unit6-bootp"><span class="std std-ref">BootP</span></a> because of <a class="reference internal" href="#unit6-bootp"><span class="std std-ref">BootP’s</span></a> capability of <a class="reference internal" href="#unit6-relay-agents"><span class="std std-ref">relay agents</span></a>. DHCP was made to be an extension of BootP so that relay agents would be able
 to relay either BootP or the new DHCP messages. Option 53 distinguishes DHCP from <a class="reference internal" href="#unit6-bootp"><span class="std std-ref">BootP</span></a> in the <a class="reference external" href="https://en.wikipedia.org/wiki/Application_layer">Layer 7</a> fields.</p>
+<div class="section" id="dhcp-s-dora">
+<span id="unit6-dhcp-dora"></span><h3>DHCP’s DORA<a class="headerlink" href="#dhcp-s-dora" title="Permalink to this headline">¶</a></h3>
+<p>The general process of a client requesting and getting an IP address from a <a class="reference internal" href="#unit6-dhcp"><span class="std std-ref">DHCP</span></a> server is DORA, which is an acronym for four specific DHCP message types:</p>
+<ul class="simple">
+<li><p>Discover</p></li>
+<li><p>Offer</p></li>
+<li><p>Request</p></li>
+<li><p>ACK, short for Acknowledge</p></li>
+</ul>
+<p>A client device will broadcast a <a class="reference internal" href="#unit6-dhcp"><span class="std std-ref">DHCP</span></a> discover message at both <a class="reference external" href="https://en.wikipedia.org/wiki/Data_link_layer">Layer 2</a> and <a class="reference external" href="https://en.wikipedia.org/wiki/Network_layer">Layer 3</a>.</p>
+<ul class="simple">
+<li><p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Network_layer">Layer 3</a> broadcast address is 255.255.255.255.</p></li>
+<li><p>The <a class="reference external" href="https://en.wikipedia.org/wiki/Data_link_layer">Layer 2</a> broadcast addresses 12 F’s.</p></li>
+</ul>
+<p>For the source <a class="reference internal" href="Unit_4.html#unit4-ip"><span class="std std-ref">IP Address</span></a>, the client uses the unspecified address of 0000, quad 0. The client’s <a class="reference internal" href="Unit_4.html#unit4-default-gateway"><span class="std std-ref">Default Gateway</span></a>, also acting as its <a class="reference internal" href="#unit6-relay-agents"><span class="std std-ref">relay agent</span></a>, will need to be pre-configured to know about
+the <a class="reference internal" href="#unit6-dhcp"><span class="std std-ref">DHCP</span></a> servers in the autonomous system. When this router interface sees the broadcast traffic and inspects the UDP datagram to see a DHCP discover message, the router will replace both the frame and the packet
+and send the UDP datagram as a unicast message in a new frame and packet to a DHCP server through the normal routing process. The server, when it gets the DHCP discover, which is now a unicast, will check to see the relay agent’s IP address, which
+was added to the DHCP portion of the message. This allows the DHCP server to know which network the client is on and give the client an address accordingly.</p>
+<p>The gateway will always be on the same network as the client, assuming a subnet mask for all networks of 255.255.0.0, which means the first two octets are networked octets and the last two octets are host octets.</p>
+<ul class="simple">
+<li><p>If the router’s IP address 10.1.0.99, the DHCP server will give the client an IP address that starts with 10.1.</p></li>
+<li><p>If the router’s IP address 10.2.0.99, the DHCP server will give the client an IP address that starts with 10.2.</p></li>
+</ul>
+<p>Each subnet has its own scope on the DHCP server. Based on the IP address of the relay agent, the DHCP server knows which scope to select an IP address from. In a similar fashion, the DHCP client transmits its MAC address
+in the DHCP discover message. This allows the DHCP server to associate that MAC address with the IP address it leases to the DHCP client.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>┌------------------------------------------------------------┐
+|           ┌-----------------------------------------------┐|
+|           |              ┌-------------------------------┐||
+|           |              |              ┌---------------┐|||
+|  Frame 2  | IP Header2   | UDP Header   | DHCP Discover ||||
+|           |              |              └---------------┘|||
+|           |              └-------------------------------┘||
+|           └-----------------------------------------------┘|
+└------------------------------------------------------------┘
+</pre></div>
+</div>
+<p>That’s how the DHCP server knows which DHCP client is using an IP address at any point in time. The DHCP server will also give other pieces of information to the DHCP client, including subnet mask, default gateway IP address,
+DHCP server addresses, DNS server addresses, and more. The server sends a DHCP offer in a unicast message back to the relay agent, who relays it back to the client. Most dedicated DHCP servers will send this back as
+a unicast message to the client, with or without a relay agent, even though the client doesn’t yet have true possession of the IP address.</p>
+</div>
 </div>
 <div class="section" id="dns-domain-name-system">
 <span id="unit6-dns"></span><h2>DNS - Domain Name System<a class="headerlink" href="#dns-domain-name-system" title="Permalink to this headline">¶</a></h2>

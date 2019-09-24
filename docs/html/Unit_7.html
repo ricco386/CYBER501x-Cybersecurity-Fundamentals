@@ -87,7 +87,17 @@
 <li class="toctree-l1"><a class="reference internal" href="Unit_5.html">Unit 5 - Networking 2</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Unit_6.html">Unit 6 - Systems Administration</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Unit 7 - Detection and Prevention</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#firewalls">Firewalls</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#firewalls">Firewalls</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#stateless-packet-filtering">Stateless packet filtering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#stateful-packet-filtering">Stateful packet filtering</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#dpi-deep-packet-inspection">DPI - Deep packet inspection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#dci-deep-content-inspection">DCI - Deep content inspection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#unit7-ids">IDS - Intrusion detection system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ips-intrusion-prevention-system">IPS - Intrusion prevention system</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#honeypots-and-deception-software">Honeypots and Deception Software</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#social-engineering">Social engineering</a></li>
 </ul>
 </li>
 </ul>
@@ -160,11 +170,50 @@
 <span id="unit7-firewalls"></span><h2>Firewalls<a class="headerlink" href="#firewalls" title="Permalink to this headline">¶</a></h2>
 <p>Firewalls can be physical hardware devices, or simply software. Firewalls filter traffic based on rules. Filtering as far as firewalls are concerned means that certain packets are not let into a network.
 It also means that packets on the way out of a network can be blocked from leaving. Certain packets will not be filtered. <strong>Firewalls permit or deny traffic both inbound and outbound.</strong></p>
-<p>Firewalls can filter by source IP address, destination IP addresses, protocols, ports, and other criteria.</p>
+<p>Firewalls can filter by source <a class="reference internal" href="Unit_4.html#unit4-ip"><span class="std std-ref">IP addresses</span></a>, destination <a class="reference internal" href="Unit_4.html#unit4-ip"><span class="std std-ref">IP addresses</span></a>, protocols, ports, and other criteria.</p>
 <ul class="simple">
 <li><p>Hardware based firewalls are also referred to as network based firewalls.</p></li>
 <li><p>Software based firewalls are also known as host based firewalls.</p></li>
 </ul>
+<div class="section" id="stateless-packet-filtering">
+<span id="unit7-stateless-packet-filtering"></span><h3>Stateless packet filtering<a class="headerlink" href="#stateless-packet-filtering" title="Permalink to this headline">¶</a></h3>
+<p>Stateless packet filtering, which is sessionless. Each packet is treated by itself as an isolated piece of communication. This requires less memory and time. There’s low overhead and high throughput. However, this type of firewall technique cannot make complex decisions based on a communication stage.</p>
+</div>
+<div class="section" id="stateful-packet-filtering">
+<span id="unit7-stateful-packet-filtering"></span><h3>Stateful packet filtering<a class="headerlink" href="#stateful-packet-filtering" title="Permalink to this headline">¶</a></h3>
+<p>Stateful packet filtering, uses sessions, can understand stages of a TCP connection, and can be aware of a hacker who tries to spoof an <a class="reference internal" href="Unit_4.html#unit4-ip"><span class="std std-ref">IP address</span></a>.</p>
+<p id="unit7-alg">An ALG, application layer gateway, applies security mechanisms based on a certain application, like HTTP, SSL/TLS, FTP, DNS, and VoIP.</p>
+<p>So instead of just looking at <a class="reference internal" href="Unit_4.html#unit4-ip"><span class="std std-ref">IP addresses</span></a>, protocols, and ports, ALG’s look deeper into the protocols to see if they’re being used properly. ALG’s understand how specific protocols should work and look at layer seven. They can filter offensive or disallowed commands in the data stream. They are stateful.</p>
+</div>
+</div>
+<div class="section" id="dpi-deep-packet-inspection">
+<span id="unit7-dpi"></span><h2>DPI - Deep packet inspection<a class="headerlink" href="#dpi-deep-packet-inspection" title="Permalink to this headline">¶</a></h2>
+<p>DPI, deep packet inspection, is done by an <a class="reference internal" href="#unit7-alg"><span class="std std-ref">ALG</span></a> to examine in great detail the contents of the data being sent.</p>
+</div>
+<div class="section" id="dci-deep-content-inspection">
+<span id="unit7-dci"></span><h2>DCI - Deep content inspection<a class="headerlink" href="#dci-deep-content-inspection" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="#unit7-dpi"><span class="std std-ref">DPI</span></a> has actually evolved into DCI, deep content inspection, which examines an entire file. DCI puts together parts of actual objects that are transmitted in parts of different packets, like PDF’s and images. DCI even decodes and decompresses files. This is a much greater form of intelligence than partial data <a class="reference external" href="https://en.wikipedia.org/wiki/Application_layer">layer seven</a> that <a class="reference internal" href="#unit7-dpi"><span class="std std-ref">DPI’s</span></a> deal with.</p>
+</div>
+<div class="section" id="unit7-ids">
+<span id="ids-intrusion-detection-system"></span><h2>IDS - Intrusion detection system<a class="headerlink" href="#unit7-ids" title="Permalink to this headline">¶</a></h2>
+<p>IDS is out of band, and simply gets copies of network traffic. It can be as simple as a system getting copies of traffic to inspect through a switch configured to send all traffic to the IDS.</p>
+<p>Since the IDS is out-of-band, it doesn’t add any latency. If the IDS sensor goes down, possibly after a target attack, traffic will still flow. An IDS can alert an administrator and even automatically tell a firewall to block traffic based on what it observes.</p>
+</div>
+<div class="section" id="ips-intrusion-prevention-system">
+<span id="unit7-ips"></span><h2>IPS - Intrusion prevention system<a class="headerlink" href="#ips-intrusion-prevention-system" title="Permalink to this headline">¶</a></h2>
+<p>IPS is in-line, so original traffic must pass through the IPS. An IPS adds latency, since traffic is processed live.</p>
+<p>If an IPS is targeted, attacked, brought down, traffic might stop right there. An IPS can alert an administrator and even automatically tell a firewall to block traffic based on what it observes.</p>
+<p>Both <a class="reference internal" href="#unit7-ids"><span class="std std-ref">IDSs</span></a> and IPSs are vulnerable to false-positives. The latest anomaly-based <a class="reference internal" href="#unit7-ids"><span class="std std-ref">IDSs</span></a> and IPSs can detect malicious insiders as well as machines or accounts that have been compromised from outsiders.</p>
+</div>
+<div class="section" id="honeypots-and-deception-software">
+<span id="unit7-honeypots"></span><h2>Honeypots and Deception Software<a class="headerlink" href="#honeypots-and-deception-software" title="Permalink to this headline">¶</a></h2>
+<p>Honeypot is a computer with intentionaly broken security to attract attackers. Typically these honeypots encourage attackers to stay on the system long enough for administrators to document and respond to the attack. It also allows administrators to refine the firewall rules based on observed attacker behaviors.</p>
+<p id="unit7-deception-software"><strong>Deception software is the new wave of honeypots.</strong> These decoys can be centrally managed, made to work with other security software, and run through virtualization. Intruders can be fooled at many layers, such as network; endpoint; application; and data with fake browser credentials and decoy work stations; phony files; datasets; and more.</p>
+</div>
+<div class="section" id="social-engineering">
+<span id="unit7-social-engineering"></span><h2>Social engineering<a class="headerlink" href="#social-engineering" title="Permalink to this headline">¶</a></h2>
+<p>Social engineering involves preying on humans who are gullible and naive, and will always be the weakest link in cybersecurity system. Social engineering has been described as the art and science of getting people to comply to your wishes and an outside hacker’s use of psychological tricks on legitimate users of a computer system.</p>
+<p>In order to obtain information, he needs to gain access to the system. Social engineering is when a hacker tricks someone into doing something they normally wouldn’t and shouldn’t do from a cybersecurity perspective.</p>
 </div>
 </div>
 

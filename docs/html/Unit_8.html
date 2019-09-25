@@ -1,0 +1,376 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Unit 8 - Malware and Forensics &mdash; RITx: CYBER501x Cybersecurity Fundamentals - Personal study notes  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Unit 7 - Detection and Prevention" href="Unit_7.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> RITx: CYBER501x Cybersecurity Fundamentals - Personal study notes
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Unit_2.html">Unit 2 - Computing Security Concepts and Problems</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_3.html">Unit 3 - Cryptography</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_4.html">Unit 4 - Networking 1</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_5.html">Unit 5 - Networking 2</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_6.html">Unit 6 - Systems Administration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Unit_7.html">Unit 7 - Detection and Prevention</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Unit 8 - Malware and Forensics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#virus">Virus</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#worm">Worm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#logic-bomb">Logic bomb</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rat-remote-access-trojan">RAT - Remote Access Trojan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#rootkit">Rootkit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#backdoor">Backdoor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#spyware">Spyware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adware">Adware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pup-potentially-unwanted-program">PUP - potentially unwanted program</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#phishing">Phishing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#spearphishing">Spearphishing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#whaling">Whaling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#pharming">Pharming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#watering-hole">Watering Hole</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ransomware">Ransomware</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#digital-forensics">Digital Forensics</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cybersecurity-incident">Cybersecurity incident</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#incident-response">Incident response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cybercrime">Cybercrime</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#digital-evidence">Digital Evidence</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#forensics-investigations">Forensics Investigations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#gather-image">Gather Image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#analysis">Analysis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#report">Report</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#anti-forensics">Anti-forensics</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">RITx: CYBER501x Cybersecurity Fundamentals - Personal study notes</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Unit 8 - Malware and Forensics</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/Unit_8.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="unit-8-malware-and-forensics">
+<span id="unit8"></span><h1>Unit 8 - Malware and Forensics<a class="headerlink" href="#unit-8-malware-and-forensics" title="Permalink to this headline">¶</a></h1>
+<p id="unit8-malware">Malware, short for malicious software, is intended to damage or break a computer system or network without user knowledge or approval. There are many different types of malware but the two most often confused ones are viruses, worms and other types of malicious software.</p>
+<div class="section" id="virus">
+<span id="unit8-virus"></span><h2>Virus<a class="headerlink" href="#virus" title="Permalink to this headline">¶</a></h2>
+<p>Virus injects itself into a program’s instructions, so that the CPU will execute the malicious instructions when they are reached in the original program. Just like a biological virus, a computer virus needs a host file to infect and that file has to be run for the virus to start running. The infected host file, in addition to a program, could be a data file or even the boot sector of a hard drive. The malicious instructions, whenever read, are executed by the CPU.</p>
+<p>Viruses can spread and replicate by themselves to other files on the same machine. But in order to spread and replicate to other machines on the network and other networks across the world, some human intervention is required.</p>
+<p>Viruses always have malicious payload that is meant to execute.</p>
+</div>
+<div class="section" id="worm">
+<span id="unit8-worm"></span><h2>Worm<a class="headerlink" href="#worm" title="Permalink to this headline">¶</a></h2>
+<p>Worm does not infect host files. It stands alone in its own file.</p>
+<p>Worms can propagate all by themselves across networks all around the world. They exploit vulnerabilities in protocols, networks, and configurations.</p>
+<p id="unit8-ddos">Worms don’t need to have any malicious payload. Infected machines, known as zombies in this botnet, robot network, will be instructed to do something. Likely sending traffic to a server that will come to a grinding halt. This common attack is known as a DDoS, distributed denial of serve attack.</p>
+<p>Interestingly enough, a DDoS doesn’t go after the confidentiality or integrity of the CIA model. It’s meant to go after the A, the availability of a system or a network.</p>
+</div>
+<div class="section" id="logic-bomb">
+<span id="unit8-logic-bomb"></span><h2>Logic bomb<a class="headerlink" href="#logic-bomb" title="Permalink to this headline">¶</a></h2>
+<p>A logic bomb is another introduces latency to when it executes. Either a certain date, time, or event will trigger this type of malware to run.</p>
+<p>From a malware author’s perspective, the longer amount of time that goes by before a new malware specimen is detected, the better. This allows the malware to spread and remain silent so antivirus companies don’t pick up on it. Then after a period of time, the malware on all infected systems will run.</p>
+</div>
+<div class="section" id="rat-remote-access-trojan">
+<span id="unit8-rat"></span><h2>RAT - Remote Access Trojan<a class="headerlink" href="#rat-remote-access-trojan" title="Permalink to this headline">¶</a></h2>
+<p>A RAT, remote administration tool, is a piece of software used to remotely access or control a computer. This tool can be used legitimately by administrators systems for accessing client computers or servers.</p>
+<p>A RAT, when used for malicious purposes, is known as a remote access Trojan. It can be used by a malicious user to control a system without the knowledge of users of that system. Remote access Trojans are malicious pieces of software that infect victim machines to gain administrative access.</p>
+<p>They are often included in pirated software through patches as a form of a cracked game or even via email attachments. Most of the popular RATs are capable of performing keystroke logging, packet capture, screen capture, camera capture, file access, code execution, registry management, password sniffing, and more. After the infection, they may perform unauthorized operations and hide their presence in the infected system.</p>
+</div>
+<div class="section" id="rootkit">
+<span id="unit8-rootkit"></span><h2>Rootkit<a class="headerlink" href="#rootkit" title="Permalink to this headline">¶</a></h2>
+<p>Rootkit, is a set of programs and code that allows a persistent or permanent undetectable presence on a computer.</p>
+<p>A rootkit can sanitize logs and repair timestamps, hiding actions of the hackers. A rootkit can also mask files, processes, and network connections and enable privileged access to the computer. It also conceals installed malware. Rootkits also install another piece of malware called a backdoor.</p>
+</div>
+<div class="section" id="backdoor">
+<span id="unit8-backdoor"></span><h2>Backdoor<a class="headerlink" href="#backdoor" title="Permalink to this headline">¶</a></h2>
+<p>After hackers exploit vulnerabilities to get into your system or network, they want to come back later with less effort. Backdoors allow hackers to do so, bypassing the normal authentication process through software left after the initial penetration.</p>
+</div>
+<div class="section" id="spyware">
+<span id="unit8-spyware"></span><h2>Spyware<a class="headerlink" href="#spyware" title="Permalink to this headline">¶</a></h2>
+<p>Spyware covertly monitors user’s activities and reports personal user data to a third party that expects financial gain.</p>
+<p>Spyware also includes the sale of personal data, the redirecting of web activity to ad sites, and the presentation of targeted ads and pop-ups through a related piece of malware called adware.</p>
+</div>
+<div class="section" id="adware">
+<span id="unit8-adware"></span><h2>Adware<a class="headerlink" href="#adware" title="Permalink to this headline">¶</a></h2>
+<p>Adware automatically plays or displays advertisements or downloads promotional material.</p>
+<p>It’s often bundled with a product or package and it’s common in shareware, free software that might require subsequent payment after a trial run.</p>
+</div>
+<div class="section" id="pup-potentially-unwanted-program">
+<span id="unit8-pup"></span><h2>PUP - potentially unwanted program<a class="headerlink" href="#pup-potentially-unwanted-program" title="Permalink to this headline">¶</a></h2>
+<p>Once Spyware or Adware is listed in EULA to avoid any legal issues, the term PUP, potentially unwanted program, was invented as a lesser way of saying Trojan horse.</p>
+</div>
+<div class="section" id="phishing">
+<span id="unit8-phishing"></span><h2>Phishing<a class="headerlink" href="#phishing" title="Permalink to this headline">¶</a></h2>
+<p>Phishing involves sending out bait mostly through email to a large number of people.</p>
+<p>Hoping some users will bite by sending usernames, passwords and even credit card information. When clicking a link in a phishing email the user is brought to a webpage that looks and feels like a real site. Therefore the user feels safe and secure in entering sensitive information, which goes directly to the attacker. Furthermore simply visiting these sites could install malware on a victim machine.</p>
+</div>
+<div class="section" id="spearphishing">
+<span id="unit8-spearphishing"></span><h2>Spearphishing<a class="headerlink" href="#spearphishing" title="Permalink to this headline">¶</a></h2>
+<p>Spear phishing takes phishing to a whole new level by targeting specific users of a specific company. Instead of just random email addresses that may or may not be valid.</p>
+</div>
+<div class="section" id="whaling">
+<span id="unit8-whaling"></span><h2>Whaling<a class="headerlink" href="#whaling" title="Permalink to this headline">¶</a></h2>
+<p>When you go after the big fish of a company, like anyone that has a title beginning with a C and ending with an O, that’s taking spear phishing to a whole new level and is called whaling.</p>
+</div>
+<div class="section" id="pharming">
+<span id="unit8-pharming"></span><h2>Pharming<a class="headerlink" href="#pharming" title="Permalink to this headline">¶</a></h2>
+<p>Farming is the hijacking of a legitimate website’s IP address and or domain name. It redirects unsuspecting users to a fake site and collects information that users enter like passwords, banking information and other PII (Personal Identifiable Information).</p>
+</div>
+<div class="section" id="watering-hole">
+<span id="unit8-watering-hole"></span><h2>Watering Hole<a class="headerlink" href="#watering-hole" title="Permalink to this headline">¶</a></h2>
+<p>A watering hole is a computer attack strategy in which the victim is in a particular group. Whether it’s an organization, an industry or a region. In this attack the hacker guesses or observes which websites the group often uses and then the hacker infects one or more of those sites with malware. Eventually some member of the targeted group gets infected. Relying on websites that the group trusts makes the strategy efficient. Even with groups that are resistant to the different forms of phishing.</p>
+</div>
+<div class="section" id="ransomware">
+<span id="unit8-ransomware"></span><h2>Ransomware<a class="headerlink" href="#ransomware" title="Permalink to this headline">¶</a></h2>
+<p>Ransomware, which locks and encrypts a device until ransom fee is paid. Scare tactics include threatening the users that if they don’t pay by a certain amount of time, files will start to be deleted. The general recommendation is not to pay the ransom.</p>
+<p>The best way to be safe is to not click on any unknown links and to keep a good set of backups that you can bring back and restore from, instead of paying the ransom fee.</p>
+</div>
+<div class="section" id="digital-forensics">
+<span id="unit8-digital-forensics"></span><h2>Digital Forensics<a class="headerlink" href="#digital-forensics" title="Permalink to this headline">¶</a></h2>
+<p>Forensic science uses scientific and mathematical processes to analyze physical evidence. This evidence can be used to inculpate, prove that somebody did something, or exculpate, prove that someone didn’t do something, in both civil and criminal cases.</p>
+<p>Digital forensics is a subcategory of forensic science. It deals with the acquiring and investigating of material found in digital devices, often in relation to computer crime. Computer forensics is a subcategory of digital forensics. There are other subcategories of digital forensics, like network forensics, and mobile device forensics.</p>
+<p>Digital forensics has also a major purpose, to figure out what happened in a cyber security related attack.</p>
+<p>Forensic readiness adds value to your cybersecurity process. Evidence for a company’s defense can be gathered with minimal disruption to the business.</p>
+<p>There are a few different ways computing devices can be part of a forensic investigation:</p>
+<ul class="simple">
+<li><p>First, computing devices can be the tool used to commit a crime.</p></li>
+<li><p>Secondly, when a computing device is hacked, it is the target of a crime.</p></li>
+<li><p>Thirdly, storage locations on a computing device represent repositories for evidence of a crime.</p></li>
+</ul>
+<div class="section" id="cybersecurity-incident">
+<span id="unit8-incident"></span><h3>Cybersecurity incident<a class="headerlink" href="#cybersecurity-incident" title="Permalink to this headline">¶</a></h3>
+<p>A cybersecurity incident is any illegal, unauthorized, or unacceptable action that involves a computing system or network. Incidents are breaches of cybersecurity measures that were put in place before.</p>
+</div>
+<div class="section" id="incident-response">
+<span id="unit8-incident-response"></span><h3>Incident response<a class="headerlink" href="#incident-response" title="Permalink to this headline">¶</a></h3>
+<p>Incident response is the forensic examination of systems and networks after they have been attacked. It also involves taking actions to remediate an ongoing incident, like blocking the attackers and restoring any lost availability as quickly as possible.</p>
+</div>
+<div class="section" id="cybercrime">
+<span id="unit8-cybercrime"></span><h3>Cybercrime<a class="headerlink" href="#cybercrime" title="Permalink to this headline">¶</a></h3>
+<p>Cybercrime is any illegal activity involving a computing device, its systems, or its applications.</p>
+</div>
+</div>
+<div class="section" id="digital-evidence">
+<span id="unit8-digital-evidence"></span><h2>Digital Evidence<a class="headerlink" href="#digital-evidence" title="Permalink to this headline">¶</a></h2>
+<p>It’s information stored or transmitted in binary form that may be relied on in court and it’s comprised of both data and metadata.</p>
+<p>This could include contact information; evidence of malicious attacks on systems; GPS location and movement records; transmission records, both authorized and unauthorized; system use or abuse; account production and use, either authorized or unauthorized; correspondence records; and content like images and files.</p>
+<p>This evidence can potentially answer common questions: Who? What? Where? When? How? Why?</p>
+<p>Different cyber crimes result in different types of digital evidence. Computer hackers may leave evidence of their activities in log files. Cyber stalkers use email to harass their victims. etc…</p>
+<p>Host-based information on computing devices can include both volatile data stored in RAM which is lost when there’s no power, and non-volatile data on the hard drive which stays when there’s no power. Optical discs and removal devices could also contain artifacts and remnants of significance for the investigator.</p>
+</div>
+<div class="section" id="forensics-investigations">
+<span id="unit8-forensics-investigations"></span><h2>Forensics Investigations<a class="headerlink" href="#forensics-investigations" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Evidence is acquired and imaged.</p></li>
+<li><p>The evidence is analyzed.</p></li>
+<li><p>Report is made, which should be understandable to even non-technical individuals.</p></li>
+</ol>
+<div class="section" id="gather-image">
+<h3>Gather Image<a class="headerlink" href="#gather-image" title="Permalink to this headline">¶</a></h3>
+<p>A forensic investigator needs to choose the way to acquire evidence that minimizes data loss, gather all the pertinent evidence, maintain the integrity of originals, create copies, and always work on the copies.</p>
+<p>Avoid destroying volatile data, missing critical data, altering timestamps, using untrusted commands or allowed tools, or adjusting the system prior to evidence seizure through patching or updating. Digital evidence must be preserved in its original state. The law requires that evidence be authentic and unaltered to be admissible in a court of law.</p>
+<p id="unit8-hash-functions"><strong>Hash functions are used to positively verify that a file or entire hard drive hasn’t been altered.</strong> And also to verify that files, hard drives, and their copies are intact, and have not changed during the investigation.</p>
+<p id="unit8-bitstream-copy">Making a <strong>bitstream copy means to image a hard drive bit-for-bit from all sectors</strong>. It is performed on the hard drive level, not the file system level. It copies metadata and data blocs in their entirety, regardless of whether they’re allocated to an active file or not. It also copies slack space.</p>
+<p>Hard drives store files in clusters of a certain size. Slack space represents the location of the end of a file on a hard drive to the end of the file cluster that the file is stored in. In this slack space, a forensic investigator can find deleted files, or at least fragments of deleted files and hidden data.</p>
+<p>Evidence can also be found in unallocated space. When you delete a file, the operating system marks that location as available, but the file that was deleted from the file system is still there in the unallocated space until the operating system chooses to use that location for a new file.</p>
+</div>
+<div class="section" id="analysis">
+<h3>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline">¶</a></h3>
+<p>In a cybersecurity-related forensic investigation, the analysis phase can confirm or dispel the existence of an incident.</p>
+</div>
+<div class="section" id="report">
+<h3>Report<a class="headerlink" href="#report" title="Permalink to this headline">¶</a></h3>
+<p>The step-by-step procedures of the imaging, details of each test, the tools used, and the facts uncovered should be written in a non-technical form so attorneys, the judge, and jury can all understand what the investigator is testifying to.</p>
+<p>This preservation process, known as the chain of custody, occurs throughout an entire investigation, from acquisition of evidence through the time the investigator testifies as an expert witness in a court of law. The chain of custody is used to maintain a record of how evidence has been handled from the moment it was collected to the moment it was presented in court.</p>
+</div>
+</div>
+<div class="section" id="anti-forensics">
+<span id="unit8-anti-forensics"></span><h2>Anti-forensics<a class="headerlink" href="#anti-forensics" title="Permalink to this headline">¶</a></h2>
+<p>Anti-forensics is designed to thwart discovery of information related to illegal activities of a user.</p>
+<p>A suspect might manipulate, erase, or obfuscate digital data to make its examination difficult, time consuming, or virtually impossible. Data-hiding techniques include obfuscating data by encryption or compression. Data could also be hidden through codes, giving innocent-looking data an alternate meaning.</p>
+<p>One way this is done is through a process known as steganography, which hides files and data inside of other files. Files could also be hidden with misleading file names or extensions, but this won’t fool forensic tools. The tools look at the first few bytes of a file, and based on these well-known signatures, the tools will identify what type of file it is, regardless of an extension.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="Unit_7.html" class="btn btn-neutral float-left" title="Unit 7 - Detection and Prevention" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Richard von Kellner. MIT License.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

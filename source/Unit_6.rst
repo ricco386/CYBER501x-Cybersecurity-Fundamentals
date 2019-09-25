@@ -42,11 +42,9 @@ DHCP - Dynamic Host Configuration Protocol
 ------------------------------------------
 
 DHCP's improvement over :ref:`BootP <unit6_bootp>` was something called scopes, which are ranges of :ref:`IP addresses <unit4_ip>` that are used in a dynamic fashion.
-A client machine asks the DHCP server for an :ref:`unit4_ip` and if there are addresses left in this dynamic pool, the server picks one and assigns it to the host, binding the logical :ref:`unit4_ip` to the host's physical 
-:ref:`unit4_mac` for a duration of time. This concept is known as a lease.
+A client machine asks the DHCP server for an :ref:`unit4_ip` and if there are addresses left in this dynamic pool, the server picks one and assigns it to the host, binding the logical :ref:`unit4_ip` to the host's physical :ref:`unit4_mac` for a duration of time. This concept is known as a lease.
 
-DHCP was made to be an extension of :ref:`BootP <unit6_bootp>` because of :ref:`BootP's <unit6_bootp>` capability of :ref:`relay agents <unit6_relay_agents>`. DHCP was made to be an extension of BootP so that relay agents would be able
-to relay either BootP or the new DHCP messages. Option 53 distinguishes DHCP from :ref:`BootP <unit6_bootp>` in the `Layer 7 <https://en.wikipedia.org/wiki/Application_layer>`_ fields.
+DHCP was made to be an extension of :ref:`BootP <unit6_bootp>` because of :ref:`BootP's <unit6_bootp>` capability of :ref:`relay agents <unit6_relay_agents>`. DHCP was made to be an extension of BootP so that relay agents would be able to relay either BootP or the new DHCP messages. Option 53 distinguishes DHCP from :ref:`BootP <unit6_bootp>` in the `Layer 7 <https://en.wikipedia.org/wiki/Application_layer>`_ fields.
 
 .. _unit6_dhcp_dora:
 
@@ -65,10 +63,7 @@ A client device will broadcast a :ref:`DHCP <unit6_dhcp>` discover message at bo
 * The `Layer 3 <https://en.wikipedia.org/wiki/Network_layer>`_ broadcast address is 255.255.255.255. 
 * The `Layer 2 <https://en.wikipedia.org/wiki/Data_link_layer>`_ broadcast addresses 12 F's.
 
-For the source :ref:`unit4_ip`, the client uses the unspecified address of 0000, quad 0. The client's :ref:`unit4_default_gateway`, also acting as its :ref:`relay agent <unit6_relay_agents>`, will need to be pre-configured to know about 
-the :ref:`DHCP <unit6_dhcp>` servers in the autonomous system. When this router interface sees the broadcast traffic and inspects the UDP datagram to see a DHCP discover message, the router will replace both the frame and the packet 
-and send the UDP datagram as a unicast message in a new frame and packet to a DHCP server through the normal routing process. The server, when it gets the DHCP discover, which is now a unicast, will check to see the relay agent's IP address, which 
-was added to the DHCP portion of the message. This allows the DHCP server to know which network the client is on and give the client an address accordingly.
+For the source :ref:`unit4_ip`, the client uses the unspecified address of 0000, quad 0. The client's :ref:`unit4_default_gateway`, also acting as its :ref:`relay agent <unit6_relay_agents>`, will need to be pre-configured to know about the :ref:`DHCP <unit6_dhcp>` servers in the autonomous system. When this router interface sees the broadcast traffic and inspects the UDP datagram to see a DHCP discover message, the router will replace both the frame and the packet  and send the UDP datagram as a unicast message in a new frame and packet to a DHCP server through the normal routing process. The server, when it gets the DHCP discover, which is now a unicast, will check to see the relay agent's IP address, which was added to the DHCP portion of the message. This allows the DHCP server to know which network the client is on and give the client an address accordingly.
 
 .. sourcecode::
 
@@ -87,12 +82,9 @@ The gateway will always be on the same network as the client, assuming a subnet 
 * If the router's IP address 10.1.0.99, the DHCP server will give the client an IP address that starts with 10.1.
 * If the router's IP address 10.2.0.99, the DHCP server will give the client an IP address that starts with 10.2.
 
-Each subnet has its own scope on the DHCP server. Based on the IP address of the relay agent, the DHCP server knows which scope to select an IP address from. In a similar fashion, the DHCP client transmits its MAC address 
-in the DHCP discover message. This allows the DHCP server to associate that MAC address with the IP address it leases to the DHCP client.
+Each subnet has its own scope on the DHCP server. Based on the IP address of the relay agent, the DHCP server knows which scope to select an IP address from. In a similar fashion, the DHCP client transmits its MAC address in the DHCP discover message. This allows the DHCP server to associate that MAC address with the IP address it leases to the DHCP client.
 
-That's how the DHCP server knows which DHCP client is using an IP address at any point in time. The DHCP server will also give other pieces of information to the DHCP client, including subnet mask, default gateway IP address, 
-DHCP server addresses, DNS server addresses, and more. The server sends a DHCP offer in a unicast message back to the relay agent, who relays it back to the client. Most dedicated DHCP servers will send this back as 
-a unicast message to the client, with or without a relay agent, even though the client doesn't yet have true possession of the IP address.
+That's how the DHCP server knows which DHCP client is using an IP address at any point in time. The DHCP server will also give other pieces of information to the DHCP client, including subnet mask, default gateway IP address, DHCP server addresses, DNS server addresses, and more. The server sends a DHCP offer in a unicast message back to the relay agent, who relays it back to the client. Most dedicated DHCP servers will send this back as a unicast message to the client, with or without a relay agent, even though the client doesn't yet have true possession of the IP address.
 
 .. _unit6_dhcp_ack:
 
@@ -102,3 +94,14 @@ After the client gets the DHCP ACK from the relay agent, the client will now be 
 
 DNS - Domain Name System
 ------------------------
+
+DNS uses a hierarchical distributed way of resolving names to IP addresses.
+
+
+DNS resolution (when nothing is cached):
+
+1. Client will query local primary DNS server to resolve FQDN (fully qualified domain name) to IP address. We'll use www.qwer.sk as an example.
+2. Local DNS server, puts the client on hold. Local DNS server do not know the answer yet and escalates the query to one of the 13 root DNS servers. The root DNS server queried gives a referral back to the client's local DNS server for the IP address of one of the authoritative DNS servers for the TLD (top level domain: .sk, .com, .net, etc.).
+3. Local DNS server will query the TLD authoritative DNS server, since it know the point of contact DNS servers for subdomains in the top level domain (qwer.sk, google.sk, etc.).
+4. Local DNS server will query DNS server for domain name (ns.qwer.sk) which resolves the FQDN to an IP address.
+5. Client's local DNS server gives that answer back to the client as if it knew the answer all along. Local DNS might cache the answer for further use.

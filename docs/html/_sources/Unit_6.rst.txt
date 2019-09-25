@@ -94,3 +94,14 @@ After the client gets the DHCP ACK from the relay agent, the client will now be 
 
 DNS - Domain Name System
 ------------------------
+
+DNS uses a hierarchical distributed way of resolving names to IP addresses.
+
+
+DNS resolution (when nothing is cached):
+
+1. Client will query local primary DNS server to resolve FQDN (fully qualified domain name) to IP address. We'll use www.qwer.sk as an example.
+2. Local DNS server, puts the client on hold. Local DNS server do not know the answer yet and escalates the query to one of the 13 root DNS servers. The root DNS server queried gives a referral back to the client's local DNS server for the IP address of one of the authoritative DNS servers for the TLD (top level domain: .sk, .com, .net, etc.).
+3. Local DNS server will query the TLD authoritative DNS server, since it know the point of contact DNS servers for subdomains in the top level domain (qwer.sk, google.sk, etc.).
+4. Local DNS server will query DNS server for domain name (ns.qwer.sk) which resolves the FQDN to an IP address.
+5. Client's local DNS server gives that answer back to the client as if it knew the answer all along. Local DNS might cache the answer for further use.

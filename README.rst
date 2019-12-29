@@ -29,9 +29,10 @@ Build the Sphinx docs::
 Run Python build-in webserver and open the build documentation in browser::
 
 	cd docs/html
-	python -m SimpleHTTPServer 8000
+	python -m http.server 8000
 	firefox http://localhost:8000/
 
+All of my study notes are released under `MIT license <https://github.com/ricco386/CYBER501x-Cybersecurity-Fundamentals/blob/master/LICENSE>`_, there is no guarantee anything here will work (for you), and I take **NO responsibility** for any illegal actions made after reading my notes.
 
 Richard von Kellner
 

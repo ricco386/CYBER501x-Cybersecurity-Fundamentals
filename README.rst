@@ -5,6 +5,7 @@ This are my personal notes taken during the course `RITx: CYBER501x Cybersecurit
 
 * `CYBER501x Cybersecurity Fundamentals notes <https://github.com/ricco386/CYBER501x-Cybersecurity-Fundamentals>`_
 * `CYBER502x Computer Forensics notes <https://github.com/ricco386/CYBER502x-Computer-Forensics>`_
+* `CYBER503x Cybersecurity Risk Management <https://github.com/ricco386/CYBER503x-Cybersecurity-Risk-Management/>`_
 
 Feel free to use them during your study and if you find it useful you can star this repository. If you find a mistake or you think I have  missed something important I am more than happy to accept RP on this repo.
 

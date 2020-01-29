@@ -31,6 +31,7 @@ My personal notes from other `RITx Cybersecurity MicroMasters® Program <https:/
 * `CYBER502x Computer Forensics <https://ricco386.github.io/CYBER502x-Computer-Forensics/>`_
 * `CYBER503x Cybersecurity Risk Management <https://ricco386.github.io/CYBER503x-Cybersecurity-Risk-Management/>`_
 
+My other personal study notes from `penetration testing <https://ricco386.github.io/Penetration-testing/>`_
 
 Indices and tables
 ==================
